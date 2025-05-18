@@ -29,7 +29,9 @@ jobs:
         source ~/.bashrc
 
     - name: Install dependencies
+      shell: bash
       run: |
+        source ~/.bashrc
         conda env create -f MLProyek/conda.yaml
         conda activate mlflow-project
         pip install mlflow
