@@ -47,7 +47,7 @@ jobs:
         echo "run_id=$(mlflow runs list --experiment-name 'Mental Health Prediction CI' --output=text | awk 'NR==2{print $1}')" >> $GITHUB_OUTPUT
 
     - name: Upload Model as Workflow Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3.1.2 # Gunakan versi spesifik yang stabil
       with:
         name: trained-model
         path: mlruns/0/${{ steps.mlflow_run.outputs.run_id }}/artifacts/best_random_forest_model/
