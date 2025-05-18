@@ -44,7 +44,7 @@ jobs:
         conda init bash
         source ~/.bashrc
         conda activate mlflow-project
-        mlflow run MLProyek --no-conda
+        mlflow run MLProyek
         echo "run_id=$(mlflow runs list --experiment-name 'Mental Health Prediction with Tuning' --output=text | awk 'NR==2{print $1}')" >> $GITHUB_OUTPUT
 
     - name: Upload Model as Workflow Artifact
