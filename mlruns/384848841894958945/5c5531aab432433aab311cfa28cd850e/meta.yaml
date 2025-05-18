@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/LASKAR%20AI/Workflow-CI/mlruns/384848841894958945/5c5531aab432433aab311cfa28cd850e/artifacts
+end_time: 1747560243726
+entry_point_name: ''
+experiment_id: '384848841894958945'
+lifecycle_stage: active
+run_id: 5c5531aab432433aab311cfa28cd850e
+run_name: brawny-shad-782
+run_uuid: 5c5531aab432433aab311cfa28cd850e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747560233781
+status: 3
+tags: []
+user_id: fauza

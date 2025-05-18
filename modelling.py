@@ -92,12 +92,20 @@ def train_and_evaluate_tuned_model(X_train, X_test, y_train, y_test):
 
         return best_model
 
-    if __name__ == "__main__":
-        # Set nama eksperimen MLflow
-        mlflow.set_experiment("Mental Health Prediction with Tuning")
+if __name__ == "__main__":
+    print("Mulai blok __main__")
+    # Set nama eksperimen MLflow
+    mlflow.set_experiment("Mental Health Prediction with Tuning")
+    print("Set eksperimen MLflow")
 
-        # Memuat data
-        X_train, X_test, y_train, y_test = load_data(X_train_path, X_test_path, y_train_path, y_test_path)
+    # Memuat data
+    X_train, X_test, y_train, y_test = load_data(X_train_path, X_test_path, y_train_path, y_test_path)
+    print("Selesai memanggil load_data")
 
+    if X_train is not None:
+        print("Data berhasil dimuat, melanjutkan ke pelatihan")
         # Melatih dan mengevaluasi model dengan tuning
         trained_model = train_and_evaluate_tuned_model(X_train, X_test, y_train, y_test)
+        print("Selesai memanggil train_and_evaluate_tuned_model")
+    else:
+        print("Gagal memuat data. Proses dihentikan.")

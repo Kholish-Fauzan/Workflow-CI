@@ -50,4 +50,4 @@ jobs:
       uses: actions/upload-artifact@v3.1.2 # Gunakan versi spesifik yang stabil
       with:
         name: trained-model
-        path: mlruns/0/${{ steps.mlflow_run.outputs.run_id }}/artifacts/best_random_forest_model/
+        path: mlruns/384848841894958945/5c5531aab432433aab311cfa28cd850e/artifacts/best_random_forest_model/

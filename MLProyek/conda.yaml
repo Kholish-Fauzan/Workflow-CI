@@ -2,7 +2,7 @@ name: mlflow-project
 channels:
   - conda-forge
 dependencies:
-  - python=3.13.2
+  - python
   - pip
   - pandas
   - scikit-learn
