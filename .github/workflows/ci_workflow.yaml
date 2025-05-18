@@ -21,12 +21,17 @@ jobs:
       with:
         auto-update-conda: true
         python-version: '3.12'
-        # miniconda-version: "24.11.3" # Specify Conda version
+
+    - name: Initialize Conda
+      shell: bash
+      run: |
+        conda init bash
+        source ~/.bashrc
 
     - name: Install dependencies
       run: |
         conda env create -f MLProyek/conda.yaml
-        conda activate mlflow-project # Activate the environment defined in conda.yaml
+        conda activate mlflow-project
         pip install mlflow
 
     - name: Run MLflow Project
