@@ -28,6 +28,10 @@ jobs:
         conda activate mlflow-project
         pip install mlflow
 
+    - name: Activate Conda Environment (Explicit)
+      run: |
+        conda activate mlflow-project
+
     - name: Run MLflow Project
       id: mlflow_run
       run: |
@@ -35,14 +39,8 @@ jobs:
         mlflow run . --file MLProject/MLProject --no-conda
         echo "run_id=$(mlflow runs list --experiment-name 'Mental Health Prediction CI' --output=text | awk 'NR==2{print $1}')" >> $GITHUB_OUTPUT
 
-    - name: Download MLflow Artifacts
-      uses: actions/download-artifact@v3
-      with:
-        name: mlflow-artifacts
-        path: mlflow-artifacts
-
     - name: Upload Model as Workflow Artifact
       uses: actions/upload-artifact@v3
       with:
         name: trained-model
-        path: mlflow-artifacts/mlruns/0/${{ steps.mlflow_run.outputs.run_id }}/artifacts/best_random_forest_model/
+        path: mlruns/0/${{ steps.mlflow_run.outputs.run_id }}/artifacts/best_random_forest_model/
