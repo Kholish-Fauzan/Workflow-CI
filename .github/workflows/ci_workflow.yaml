@@ -21,7 +21,7 @@ jobs:
       with:
         auto-update-conda: true
         python-version: '3.12'
-        miniconda-version: "24.11.3" # Specify Conda version
+        # miniconda-version: "24.11.3" # Specify Conda version
 
     - name: Install dependencies
       run: |
