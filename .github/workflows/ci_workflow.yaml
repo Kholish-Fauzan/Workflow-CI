@@ -1,53 +1,24 @@
-name: CI Workflow (Skilled)
+name: Simple CI Test
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  retrain_model:
+  test_workflow:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Debug - List Files
-      run: ls -al
-
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.13.2'
-
-    - name: Set up Conda
-      uses: conda-incubator/setup-miniconda@v2
-      with:
-        auto-update-conda: true
-        python-version: '3.13.2'
-        miniconda-version: "4.10.3"
-
-    - name: Create Conda Environment
+    - name: Upload Dummy Artifact
       run: |
-        conda env create -f MLProject/conda.yaml
+        mkdir -p dummy_artifact
+        echo "hello" > dummy_artifact/test.txt
+        ls -al dummy_artifact
 
-    - name: Install MLflow
-      run: |
-        conda activate mlflow-project
-        pip install mlflow
-
-    - name: Activate Conda Environment (Explicit)
-      run: |
-        conda activate mlflow-project
-
-    - name: Run MLflow Project
-      id: mlflow_run
-      run: |
-        conda activate mlflow-project
-        mlflow run . --file MLProject/MLProject --no-conda
-        echo "run_id=$(mlflow runs list --experiment-name 'Mental Health Prediction CI' --output=text | awk 'NR==2{print $1}')" >> $GITHUB_OUTPUT
-
-    - name: Upload Model as Workflow Artifact
+    - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: trained-model
-        path: mlruns/0/${{ steps.mlflow_run.outputs.run_id }}/artifacts/best_random_forest_model/
+        name: dummy-artifact
+        path: dummy_artifact
