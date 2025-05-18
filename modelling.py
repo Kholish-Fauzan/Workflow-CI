@@ -10,7 +10,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Definisikan nama folder dan file dataset
-data_folder = 'mental_health_preprocessing'
+data_folder = 'MLProyek/mental_health_preprocessing'
 X_train_path = f'{data_folder}/X_train.csv'
 X_test_path = f'{data_folder}/X_test.csv'
 y_train_path = f'{data_folder}/y_train.csv'
